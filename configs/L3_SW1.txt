@@ -1,0 +1,314 @@
+enable password, vty password: cisco
+enable secret class : class
+
+L3_SW1>en
+Password: 
+L3_SW1#sh run
+Building configuration...
+
+Current configuration : 5638 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname L3_SW1
+!
+!
+no profinet
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+enable password 7 0822455D0A16
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+username admin secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name ssh.com
+!
+!
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 24576
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description port-channel to L3_SW2
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/1
+ description connection to S3
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ description connection to S4
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+
+interface FastEthernet0/3
+ description connection to S5
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface FastEthernet0/5
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99,999
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface FastEthernet0/6
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/7
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/8
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/9
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/10
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/11
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/12
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/13
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/14
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/15
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/16
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/17
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/18
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/19
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/20
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/21
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/22
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/23
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/24
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface GigabitEthernet0/1
+ no switchport
+ ip address 10.0.1.98 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ switchport access vlan 66
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 00d0.9746.0801
+ ip address 10.0.1.2 255.255.255.192
+ ip helper-address 10.0.1.97
+ standby version 2
+ standby 1 ip 10.0.1.1
+ standby 1 priority 150
+ standby 1 preempt
+!
+interface Vlan20
+ mac-address 00d0.9746.0802
+ ip address 10.0.0.2 255.255.255.0
+ ip helper-address 10.0.1.97
+ standby version 2
+ standby 2 ip 10.0.0.1
+ standby 2 priority 150
+ standby 2 preempt
+!
+interface Vlan30
+ mac-address 00d0.9746.0803
+ ip address 10.0.1.66 255.255.255.240
+ ip helper-address 10.0.1.97
+!
+interface Vlan99
+ mac-address 00d0.9746.0804
+ ip address 10.0.1.82 255.255.255.240
+ standby version 2
+ standby 9 ip 10.0.1.81
+!
+router eigrp 1
+ eigrp router-id 2.2.2.2
+ network 10.0.1.96 0.0.0.3
+ network 10.0.1.0 0.0.0.63
+ network 10.0.0.0 0.0.0.255
+ network 10.0.1.80 0.0.0.15
+ network 10.0.1.64 0.0.0.15
+ auto-summary
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.0.1.97 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard vty_block
+ permit host 10.0.1.94
+ deny any
+!
+banner motd ^Cdont^C
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 5 30
+ password 7 0822455D0A16
+ login
+!
+line aux 0
+ exec-timeout 5 30
+ password 7 0822455D0A16
+ login
+!
+line vty 0 4
+ access-class vty_block in
+ exec-timeout 5 30
+ password 7 0822455D0A16
+ login
+ transport input ssh
+line vty 5 15
+ access-class vty_block in
+ exec-timeout 5 30
+ password 7 0822455D0A16
+ login
+ transport input ssh
+!
+!
+!
+!
+end
