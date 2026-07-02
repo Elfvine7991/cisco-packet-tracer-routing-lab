@@ -16,6 +16,7 @@ This project is a Cisco Packet Tracer routing and switching lab designed to prac
 - PortFast
 - BPDU Guard
 - Unused VLAN security configuration
+- DTP is disabled on all switch-to-switch links to prevent unwanted dynamic trunk negotiation.
   
 ## Network Overview
 
@@ -47,6 +48,7 @@ HSRP is configured to provide gateway redundancy for user VLANs.
 SSH is configured for secure remote access.  
 A standard ACL is applied to VTY lines to restrict management access.  
 Unused ports are assigned to an unused VLAN for basic Layer 2 security.  
+DTP is disabled on all switch-to-switch links to prevent unwanted dynamic trunk negotiation.
 PortFast and BPDU Guard are configured on access ports to improve convergence and protect against accidental switch connections.
 
 ## Files
