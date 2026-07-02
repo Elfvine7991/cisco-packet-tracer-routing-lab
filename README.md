@@ -18,6 +18,9 @@ This project is a Cisco Packet Tracer routing and switching lab designed to prac
 - Unused VLAN security configuration
 - DTP is disabled on all switch-to-switch links to prevent unwanted dynamic trunk negotiation.
   
+  ## Topology
+
+![Network Topology](topology.png)
 ## Network Overview
 
 The topology includes multiple VLANs, Layer 3 switches, routers, and an ISP connection.  
