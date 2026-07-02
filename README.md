@@ -58,4 +58,3 @@ PortFast and BPDU Guard are configured on access ports to improve convergence an
 
 - `routing-lab.pkt` — Packet Tracer topology file
 - `topology.png` — Network topology screenshot
-- `configs/` — Device configuration files
